@@ -11,6 +11,7 @@ return {
 
 		-- configure treesitter
 		treesitter.setup({ -- enable syntax highlighting
+			prefer_git = true,
 			highlight = {
 				enable = true,
 			},

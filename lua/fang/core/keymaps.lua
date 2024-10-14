@@ -8,6 +8,9 @@ local keymap = vim.keymap -- for conciseness
 
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+keymap.set("i", "jl", "<ESC>f,2lvt,c", { desc = "Write next para with jl" })
+keymap.set("n", "cm", "<ESC>F,2lvt,c", { desc = "Write next para with jl" })
+keymap.set("i", "jL", "<ESC>f,2lvt)c", { desc = "Write last para with jL" })
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })

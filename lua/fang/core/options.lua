@@ -46,3 +46,4 @@ opt.swapfile = false
 -- fold
 vim.wo.foldmethod = "expr"
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevel = 99
