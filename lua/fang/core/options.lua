@@ -1,6 +1,10 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
+vim.g.python3_host_prog = "~/.config/nvim/venv/bin/python3"
+
 local opt = vim.opt -- for conciseness
+
+opt.mouse = ""
 
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
