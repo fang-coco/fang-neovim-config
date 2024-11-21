@@ -1,6 +1,7 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = "nvim-tree/nvim-web-devicons",
+	tag = "nightly",
 	config = function()
 		local nvimtree = require("nvim-tree")
 
@@ -18,6 +19,7 @@ return {
 				indent_markers = {
 					enable = true,
 				},
+				root_folder_label = false,
 				icons = {
 					glyphs = {
 						folder = {

@@ -3,7 +3,12 @@ return {
 	config = function()
 		local wilder = require("wilder")
 
-		wilder.setup({ modes = { ":", "/", "?" }, use_python_remote_plugin = true })
+		wilder.setup({
+			modes = { ":", "/", "?" },
+			-- next_key = { "<Tab>", "<S-j>" },
+			-- previous_key = { "<S-Tab>", "<C-k>" },
+			use_python_remote_plugin = true,
+		})
 		local gradient = {
 			"#f4468f",
 			"#fd4a85",
@@ -32,8 +37,8 @@ return {
 
 		wilder.set_option(
 			"renderer",
-			wilder.popupmenu_renderer(
-				wilder.popupmenu_palette_theme({
+			wilder.renderer_mux({
+				[":"] = wilder.popupmenu_renderer(wilder.popupmenu_palette_theme({
 					-- 'single', 'double', 'rounded' or 'solid'
 					-- can also be a list of 8 characters, see :h wilder#popupmenu_palette_theme() for more details
 					border = "rounded",
@@ -50,15 +55,17 @@ return {
 					}),
 					left = { " ", wilder.popupmenu_devicons() },
 					right = { " ", wilder.popupmenu_scrollbar() },
-				})
-				-- highlights = {
-				-- 	gradient = gradient, -- must be set
-				-- 	-- selected_gradient key can be set to apply gradient highlighting for the selected candidate.
-				-- },
-				-- highlighter = wilder.highlighter_with_gradient({
-				-- 	wilder.basic_highlighter(), -- or wilder.lua_fzy_highlighter(),
-				-- }),
-			)
+				})),
+				["/"] = wilder.wildmenu_renderer({
+					highlights = {
+						gradient = gradient, -- must be set
+						-- selected_gradient key can be set to apply gradient highlighting for the selected candidate.
+					},
+					highlighter = wilder.highlighter_with_gradient({
+						wilder.basic_highlighter(), -- or wilder.lua_fzy_highlighter(),
+					}),
+				}),
+			})
 		)
 
 		wilder.set_option("pipeline", {
